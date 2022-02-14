@@ -1,11 +1,26 @@
-import StatusCodes from "http-status-codes";
+// import StatusCodes from "http-status-codes";
 import { Request, RequestHandler, Response, Router } from "express";
-import { SelectOption, Text, TextType } from "src/types/types";
 import axios from "axios";
+
+export type SelectOption = {
+  value: string;
+  text: Text;
+};
+
+export enum TextType {
+  PLAIN_TEXT = "plain_text",
+  MARK_DOWN = "mrkdwn",
+}
+
+export type Text = {
+  type: TextType;
+  text: string;
+  emoji?: boolean;
+};
 
 // Constants
 const router = Router();
-const { CREATED, OK } = StatusCodes;
+// const { CREATED, OK } = StatusCodes;
 
 const path = {
   events: "/events",
