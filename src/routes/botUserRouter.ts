@@ -99,6 +99,10 @@ const botResponse: RequestHandler = async (req: Request, res: Response) => {
       /* send second conversion */
       res.sendStatus(200);
       const responseUrl = message.response_url as string;
+      console.log(
+        "this is the resonse url from the first response --> ",
+        responseUrl
+      );
       (textBlock.elements as Text[]) = [
         {
           type: TextType.PLAIN_TEXT,
@@ -128,7 +132,12 @@ const botResponse: RequestHandler = async (req: Request, res: Response) => {
       -1
     ) {
       /* send thank you */
+      res.sendStatus(200);
       const responseUrl = message.response_url as string;
+      console.log(
+        "this is the resonse url from the second response --> ",
+        responseUrl
+      );
       (textBlock.elements as Text[]) = [
         {
           type: TextType.PLAIN_TEXT,
@@ -139,6 +148,7 @@ const botResponse: RequestHandler = async (req: Request, res: Response) => {
       conversation.blocks = [];
       conversation.blocks.push(textBlock);
       await axios.post(responseUrl, conversation);
+      return;
     } else {
       /* handle implementation */
     }
