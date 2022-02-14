@@ -7,7 +7,10 @@
     "start": "node -r module-alias/register ./dist --env=production",
     "dev": "nodemon",
     "test": "nodemon --config ./spec/nodemon.json",
-    "test:no-reloading": "./node_modules/.bin/ts-node -r tsconfig-paths/register ./spec"
+    "test:no-reloading": "./node_modules/.bin/ts-node -r tsconfig-paths/register ./spec",
+    "migrations:create": "ts-node --transpile-only ./node_modules/typeorm/cli.js migration:create -n ",
+    "migrations:generate": "ts-node --transpile-only ./node_modules/typeorm/cli.js migration:generate -n ",
+    "migrations:run": "ts-node --transpile-only ./node_modules/typeorm/cli.js migration:run "
   },
   "nodemonConfig": {
     "watch": [
@@ -59,7 +62,8 @@
   },
   "eslintIgnore": [
     "src/public/",
-    "build.ts"
+    "build.ts",
+    "ormconfig.ts"
   ],
   "dependencies": {
     "@types/axios": "^0.14.0",
@@ -67,6 +71,7 @@
     "command-line-args": "^5.2.1",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.0",
+    "dotenv-expand": "^8.0.1",
     "express": "^4.17.2",
     "express-async-errors": "^3.1.1",
     "helmet": "^5.0.2",
@@ -74,7 +79,12 @@
     "jet-logger": "^1.1.5",
     "jsonfile": "^6.1.0",
     "module-alias": "^2.2.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "pg": "^8.7.3",
+    "reflect-metadata": "^0.1.13",
+    "typedi": "^0.10.0",
+    "typeorm": "^0.2.41",
+    "typeorm-typedi-extensions": "^0.4.1"
   },
   "devDependencies": {
     "@types/command-line-args": "^5.2.0",

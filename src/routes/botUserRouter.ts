@@ -1,6 +1,8 @@
 // import StatusCodes from "http-status-codes";
 import { Request, RequestHandler, Response, Router } from "express";
 import axios from "axios";
+import { db } from "@services/databaseService";
+import { UserResponse } from "src/entities/userResponse";
 
 export type SelectOption = {
   value: string;
@@ -113,6 +115,9 @@ const botResponse: RequestHandler = async (req: Request, res: Response) => {
     ) {
       /* send second conversion */
       res.sendStatus(200);
+      const userResponse = new UserResponse();
+      userResponse.feeling = selectedOptionText;
+      await db().save(UserResponse, userResponse);
       const responseUrl = message.response_url as string;
       console.log(
         "this is the resonse url from the first response --> ",
@@ -148,6 +153,13 @@ const botResponse: RequestHandler = async (req: Request, res: Response) => {
     ) {
       /* send thank you */
       res.sendStatus(200);
+      const existingUserResponses = await db().find(UserResponse);
+      if (existingUserResponses.length > 0) {
+        const lastUserInConversation =
+          existingUserResponses.pop() as UserResponse;
+        lastUserInConversation.hobbies = selectedOptionText;
+        await db().save(lastUserInConversation);
+      }
       const responseUrl = message.response_url as string;
       console.log(
         "this is the resonse url from the second response --> ",
