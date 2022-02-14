@@ -128,6 +128,7 @@ const botResponse: RequestHandler = async (req: Request, res: Response) => {
       -1
     ) {
       /* send thank you */
+      const responseUrl = message.response_url as string;
       (textBlock.elements as Text[]) = [
         {
           type: TextType.PLAIN_TEXT,
@@ -137,6 +138,7 @@ const botResponse: RequestHandler = async (req: Request, res: Response) => {
       ];
       conversation.blocks = [];
       conversation.blocks.push(textBlock);
+      await axios.post(responseUrl, conversation);
     } else {
       /* handle implementation */
     }
