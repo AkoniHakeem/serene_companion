@@ -1,0 +1,67 @@
+    {
+  "type": "block_actions",
+  "user": {
+    "id": "U032U1AK5HR",
+    "username": "akonimayowa",
+    "name": "akonimayowa",
+    "team_id": "T032MAXL9CN"
+  },
+  "api_app_id": "A032UU4MZ3M",
+  "token": "I5qYYSTl7rRP6V1WMTbk6JV5",
+  "container": {
+    "type": "message",
+    "message_ts": "1644750564.000200",
+    "channel_id": "C032R3R9D53",
+    "is_ephemeral": true
+  },
+  "trigger_id": "3121200659824.3089371689430.350ec71201dc1b6a611d760235274564",
+  "team": {
+    "id": "T032MAXL9CN",
+    "domain": "awesome-teamglobal"
+  },
+  "enterprise": null,
+  "is_enterprise_install": false,
+  "channel": {
+    "id": "C032R3R9D53",
+    "name": "general"
+  },
+  "state": {
+    "values": {
+      "L+/M": {
+        "static_select-action": {
+          "type": "static_select",
+          "selected_option": {
+            "text": {
+              "type": "plain_text",
+              "text": "*Doing Well*",
+              "emoji": true
+            },
+            "value": "0"
+          }
+        }
+      }
+    }
+  },
+  "response_url": "https://hooks.slack.com/actions/T032MAXL9CN/3110062095601/9z5lmcPWlF6JH492l8DTzsn3",
+  "actions": [
+    {
+      "type": "static_select",
+      "action_id": "static_select-action",
+      "block_id": "L+/M",
+      "selected_option": {
+        "text": {
+          "type": "plain_text",
+          "text": "*Doing Well*",
+          "emoji": true
+        },
+        "value": "0"
+      },
+      "placeholder": {
+        "type": "plain_text",
+        "text": "Select an item",
+        "emoji": true
+      },
+      "action_ts": "1644751820.532038"
+    }
+  ]
+}
